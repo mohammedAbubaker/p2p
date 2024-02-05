@@ -9,16 +9,13 @@ import cv2
 async def main():
     pc = RTCPeerConnection()
 
-    relay = MediaRelay()
-    webcam = MediaPlayer('default:none', 'avfoundation', options={'framerate': '30', 'video_size': '640x480'})
-    pc.addTrack(relay.subscribe(webcam.video))
-
     @pc.on("track")
     async def on_track(track):
         while True:
             frame = await track.recv()
             cv2.imshow('Frame', frame.to_ndarray(format='bgr24'))
-            cv2.waitKey(1)
+            cv2.waitKey(1) 
+            print("lol")
 
     async def negotiate():
         retrieve_offer = (await message_server("p2gib")).decode()
@@ -46,7 +43,7 @@ async def main():
         if (message != "close") and (message != "p2gib"):
             message = "2" + message
         s = socket.socket()
-        port = 1232
+        port = 1230
         s.connect(('c116171.wlan.net.ed.ac.uk', port))
         s.send(message.encode())
         response  = s.recv(4000)

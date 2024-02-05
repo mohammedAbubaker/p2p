@@ -5,7 +5,7 @@ async def main():
     # bind socket
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    port = 1232
+    port = 1230
     s.bind(('c116171.wlan.net.ed.ac.uk', port))
     s.listen(5)
 
