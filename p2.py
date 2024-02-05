@@ -15,7 +15,6 @@ async def main():
             frame = await track.recv()
             cv2.imshow('Frame', frame.to_ndarray(format='bgr24'))
             cv2.waitKey(1) 
-            print("lol")
 
     async def negotiate():
         retrieve_offer = (await message_server("p2gib")).decode()
