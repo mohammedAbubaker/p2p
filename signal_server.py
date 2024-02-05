@@ -3,9 +3,10 @@ import socket
 
 async def main():
     # bind socket
-    s = socket.socket()
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     port = 1232
-    s.bind(('localhost', port))
+    s.bind(('c116171.wlan.net.ed.ac.uk', port))
     s.listen(5)
 
     p1_info = ""
